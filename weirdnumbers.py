@@ -1,3 +1,5 @@
+n=101
+
 #constraints n is greater or equal to 1 and less than or equal to 100
 if (n < 1 or n > 100):
     print("N is out of range")

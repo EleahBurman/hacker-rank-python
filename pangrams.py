@@ -69,16 +69,23 @@ def pangrams(s):
     #26 letters in alphabet
     # count how many different letters are in s -- if 26 then pangram if not then not pangram
     #remove spaces in s
-    s=s.replace(" ", "")
-    unique_letters=[]
-    for letter in s:
-        if(letter not in unique_letters):
-            unique_letters.append(letter)
-    total=len(unique_letters)
-    if(total==26):
-        return("pangram")
+    # Remove spaces in s and convert to lowercase for case-insensitive comparison
+    s = s.replace(" ", "").lower()
+    
+    # Set to store unique alphabet letters
+    unique_letters = set()
+    
+    # Iterate through each character in the string
+    for char in s:
+        # Check if the character is an alphabet letter
+        if char.isalpha():
+            unique_letters.add(char)
+    
+    # Check if all 26 letters are present
+    if len(unique_letters) == 26:
+        return "pangram"
     else:
-        return("not pangram")
+        return "not pangram"
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
